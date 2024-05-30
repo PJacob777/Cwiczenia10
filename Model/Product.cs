@@ -21,5 +21,5 @@ public class Product
     public decimal ProductDepth { get; set; }
 
     public IEnumerable<ShoppingCard> ShoppingCards { get; set; }
-    public IEnumerable<Product_Category> ProductCategories { get; set; }
+    public IEnumerable<ProductCategory> ProductCategories { get; set; }
 }
