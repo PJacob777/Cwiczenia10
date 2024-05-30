@@ -1,9 +1,11 @@
+using Cwiczenia10.Model;
 using Microsoft.EntityFrameworkCore;
 
 namespace Cwiczenia10.Context;
 
 public class DatabaseContext : DbContext
 {
+    public DbSet<Role> Roles { get; set; }
     protected DatabaseContext()
     {
     }
