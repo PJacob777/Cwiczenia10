@@ -9,20 +9,20 @@ public class Account
     [Column("PK_acount")]
     public int IdAccount { get; set; }
     
-    [Column("FK_roles")]
+    [Column("FK_role")]
     [ForeignKey("Roles")]
     public int IdRole  { get; set; }
-    [MaxLength(50)]
     [Column("first_name")]
-    public string FirstName { get; set; }
     [MaxLength(50)]
+    public string FirstName { get; set; }
     [Column("last_name")] 
+    [MaxLength(50)]
     public string LastName { get; set; }
-    [MaxLength(80)]
     [Column("email")]
+    [MaxLength(80)]
     public string Email { get; set; }
-    [MaxLength(9)]
     [Column("phone")]
+    [MaxLength(9)]
     public string? Phone { get; set; }
 
     public Role role { get; set; }

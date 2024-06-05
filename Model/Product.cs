@@ -10,7 +10,7 @@ public class Product
     public int IdProduct { get; set; }
     [Column("name")]
     [MaxLength(100)]
-    public string name { get; set; }
+    public string Name { get; set; }
     [Column("width", TypeName = "decimal(5,2)")]
     public decimal ProductWidth { get; set; }
     
