@@ -7,7 +7,7 @@ public static class AddEndpoints
 {
     public static void AddEnd(this WebApplication application)
     {
-        application.MapGet("/api/accounts/{accountId:int}", async (int id, IMochDB mochDB) =>
+        application.MapGet("/api/accounts/{id:int}", async (int id, IMochDB mochDB) =>
         {
             var accountById = await mochDB.GetAccountById(id);
             if(accountById is null)

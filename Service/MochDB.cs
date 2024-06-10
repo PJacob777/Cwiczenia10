@@ -10,10 +10,11 @@ public interface IMochDB
     Task<AccountResponse?> GetAccountById(int id);
     Task<bool> CreateAccount(ProductDTO product);
 }
-public class MochDB (DatabaseContext databaseContext) : IMochDB
+public class  ProductService(DatabaseContext databaseContext) : IMochDB
 {
     public async Task<AccountResponse?> GetAccountById(int id)
     {
+        Console.WriteLine("TU");
         var response = await databaseContext.Accounts
             .Where(a => a.IdAccount == id)
             .Select(a => new AccountResponse
@@ -32,10 +33,9 @@ public class MochDB (DatabaseContext databaseContext) : IMochDB
                         Amount = sc.Amount
                     }).ToList()
             }).FirstOrDefaultAsync();
-
         if (response == null)
         {
-            //throw new NotFound("Nie znaleziono konta o id " + id);
+            throw new NotFound("Nie znaleziono konta o id " + id);
         }
 
         return response;
