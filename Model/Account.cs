@@ -9,8 +9,8 @@ public class Account
     [Column("PK_acount")]
     public int IdAccount { get; set; }
     
+    [ForeignKey("Role")]
     [Column("FK_role")]
-    [ForeignKey("Roles")]
     public int IdRole  { get; set; }
     [Column("first_name")]
     [MaxLength(50)]
@@ -25,7 +25,7 @@ public class Account
     [MaxLength(9)]
     public string? Phone { get; set; }
 
-    public Role role { get; set; }
+    public Role Role { get; set; }
 
-    public IEnumerable<ShoppingCard> ShoppingCards;
+    public IEnumerable<ShoppingCard> ShoppingCards { get; set; }
 }

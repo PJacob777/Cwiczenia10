@@ -5,7 +5,7 @@
 namespace Cwiczenia10.Migrations
 {
     /// <inheritdoc />
-    public partial class Finishingdatabase : Migration
+    public partial class testdatabase : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

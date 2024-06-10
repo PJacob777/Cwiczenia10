@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Cwiczenia10.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20240605161605_Finishing database")]
-    partial class Finishingdatabase
+    [Migration("20240605170716_test database")]
+    partial class testdatabase
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -213,7 +213,7 @@ namespace Cwiczenia10.Migrations
             modelBuilder.Entity("Cwiczenia10.Model.ShoppingCard", b =>
                 {
                     b.HasOne("Cwiczenia10.Model.Account", "Account")
-                        .WithMany()
+                        .WithMany("ShoppingCards")
                         .HasForeignKey("IdAccount")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -227,6 +227,11 @@ namespace Cwiczenia10.Migrations
                     b.Navigation("Account");
 
                     b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("Cwiczenia10.Model.Account", b =>
+                {
+                    b.Navigation("ShoppingCards");
                 });
 
             modelBuilder.Entity("Cwiczenia10.Model.Category", b =>
