@@ -1,5 +1,6 @@
 using Cwiczenia10.Context;
 using Cwiczenia10.DTO;
+using Cwiczenia10.Model;
 using Cwiczenia10.Response;
 using Microsoft.EntityFrameworkCore;
 namespace Cwiczenia10.Service;
@@ -7,7 +8,7 @@ namespace Cwiczenia10.Service;
 public interface IMochDB
 {
     Task<AccountResponse?> GetAccountById(int id);
-    bool CreateAccount(ProductDTO product);
+    Task<bool> CreateAccount(ProductDTO product);
 }
 public class MochDB (DatabaseContext databaseContext) : IMochDB
 {
@@ -41,8 +42,27 @@ public class MochDB (DatabaseContext databaseContext) : IMochDB
     }
     
 
-    public bool CreateAccount(ProductDTO product)
+    public async Task<bool> CreateAccount(ProductDTO productDto)
     {
-        
+        foreach (var productCategory in productDto.ListOfCategories)
+        {
+            var category = await databaseContext.Categories.FindAsync(productCategory);
+            if (category == null)
+            {
+                return false;
+            }
+        }
+        var product = new Product
+        {
+            Name = productDto.Name,
+            ProductWidth = productDto.Weight,
+            ProductHeight = productDto.Height,
+            ProductDepth = productDto.Depth,
+            ProductCategories = productDto.ListOfCategories.Select(categoryId => new ProductCategory()
+            {
+                IdCategory = categoryId
+            }).ToList()
+        };
+        return true;
     }
 }
