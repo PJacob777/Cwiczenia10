@@ -9,7 +9,7 @@ public class AccountResponse
     public string Email { get; set; }
     public string? Phone { get; set; }
     public string Role { get; set; }
-    public IEnumerable<ResponseCard> ResponseCards { get; set; }
+    public List<ResponseCard> ResponseCards { get; set; }
 }
 
 public class ResponseCard
